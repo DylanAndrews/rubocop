@@ -52,6 +52,9 @@ module RuboCop
             end
           end
 
+          options_block_regex = /with_options.*dependent: :destroy/
+          return if options_block_regex =~ processed_source.buffer.source
+
           add_offense(node, :selector)
         end
       end
